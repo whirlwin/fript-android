@@ -1,4 +1,4 @@
-package no.gymbror.gymbror.permission;
+package no.fript.fript.permission;
 
 public final class PermissionConstants {
 

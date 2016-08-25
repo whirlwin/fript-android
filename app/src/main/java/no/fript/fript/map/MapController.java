@@ -1,4 +1,4 @@
-package no.gymbror.gymbror.map;
+package no.fript.fript.map;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
@@ -7,7 +7,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
-import no.gymbror.gymbror.R;
+import no.fript.fript.R;
 
 public final class MapController implements OnMapReadyCallback {
 

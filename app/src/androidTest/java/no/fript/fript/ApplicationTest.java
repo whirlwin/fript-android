@@ -1,4 +1,4 @@
-package no.gymbror.gymbror;
+package no.fript.fript;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

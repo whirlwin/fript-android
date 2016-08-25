@@ -1,7 +1,6 @@
-package no.gymbror.gymbror.map;
+package no.fript.fript.map;
 
 import android.app.Activity;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -17,7 +16,7 @@ import org.json.JSONObject;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import no.gymbror.gymbror.ApiClient;
+import no.fript.fript.ApiClient;
 
 public final class MapActiveUserSynchronizer {
 

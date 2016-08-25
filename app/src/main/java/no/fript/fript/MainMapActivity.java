@@ -1,4 +1,4 @@
-package no.gymbror.gymbror;
+package no.fript.fript;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -14,10 +14,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
-import no.gymbror.gymbror.map.MapController;
-import no.gymbror.gymbror.permission.PermissionConstants;
+import no.fript.fript.map.MapController;
+import no.fript.fript.permission.PermissionConstants;
 
-public final class NearbyGymBrosActivity extends FragmentActivity /*implements OnMapReadyCallback*/ {
+public final class MainMapActivity extends FragmentActivity /*implements OnMapReadyCallback*/ {
 
     private GoogleMap mMap;
     private MapController mapController;
@@ -26,7 +26,7 @@ public final class NearbyGymBrosActivity extends FragmentActivity /*implements O
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_nearby_gym_bros);
+        setContentView(R.layout.activity_main_map);
 
         this.mapController = new MapController(this);
         /*

@@ -1,4 +1,4 @@
-package no.gymbror.gymbror.map;
+package no.fript.fript.map;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
-import no.gymbror.gymbror.permission.PermissionConstants;
+import no.fript.fript.permission.PermissionConstants;
 
 public final class MapInitializer {
 

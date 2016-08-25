@@ -1,4 +1,4 @@
-package no.gymbror.gymbror;
+package no.fript.fript;
 
 import org.junit.Test;
 
