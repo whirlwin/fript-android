@@ -2,6 +2,7 @@ package no.fript.fript;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.facebook.CallbackManager;
@@ -10,12 +11,14 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-public class StartActivity extends AppCompatActivity {
+public final class StartMenuActivity extends AppCompatActivity {
+
+    private static final String FB_EMAIL_PERMISSION = "email";
 
     private CallbackManager callbackManager = CallbackManager.Factory.create();
 
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
+    protected void onCreate(final @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_start);
@@ -23,7 +26,7 @@ public class StartActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
 
         final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions(FB_EMAIL_PERMISSION);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
             @Override
@@ -34,13 +37,11 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onCancel() {
                 int i = 0;
-                // App code
             }
 
             @Override
             public void onError(final FacebookException exception) {
                 int i = 0;
-                // App code
             }
         });
     }
