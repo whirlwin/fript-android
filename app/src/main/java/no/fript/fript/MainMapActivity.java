@@ -12,12 +12,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 import no.fript.fript.map.MapController;
 import no.fript.fript.permission.PermissionConstants;
 
-public final class MainMapActivity extends FragmentActivity /*implements OnMapReadyCallback*/ {
+public final class MainMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private MapController mapController;
@@ -29,15 +31,11 @@ public final class MainMapActivity extends FragmentActivity /*implements OnMapRe
         setContentView(R.layout.activity_main_map);
 
         this.mapController = new MapController(this);
-        /*
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        */
     }
 
-
-    /*
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         mMap = googleMap;
@@ -51,7 +49,6 @@ public final class MainMapActivity extends FragmentActivity /*implements OnMapRe
             askForLocationPermission();
         }
     }
-    */
 
     private void askForLocationPermission() {
         ActivityCompat.requestPermissions(this, new String[]{ Manifest.permission.ACCESS_COARSE_LOCATION },

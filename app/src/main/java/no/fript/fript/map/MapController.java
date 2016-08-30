@@ -34,6 +34,6 @@ public final class MapController implements OnMapReadyCallback {
         mapInitializer.initializeMap();
 
         mapActiveUserSynchronizer = new MapActiveUserSynchronizer(activity, mMap);
-        mapActiveUserSynchronizer.synchronizeActiveUsers();
+        //mapActiveUserSynchronizer.synchronizeActiveUsers();
     }
 }

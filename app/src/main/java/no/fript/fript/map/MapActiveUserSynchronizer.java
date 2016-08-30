@@ -1,6 +1,7 @@
 package no.fript.fript.map;
 
 import android.app.Activity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -17,6 +18,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import no.fript.fript.ApiClient;
+import no.fript.fript.LogConstants;
 
 public final class MapActiveUserSynchronizer {
 
@@ -41,7 +43,7 @@ public final class MapActiveUserSynchronizer {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(final VolleyError error) {
-                        Toast.makeText(mActivity, "got err: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e(LogConstants.GET_ACTIVE_USERS, "Failed to get active users", error);
                     }
                 });
             }
