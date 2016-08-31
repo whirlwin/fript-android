@@ -14,7 +14,7 @@ public final class MapController implements OnMapReadyCallback {
     private final Activity activity;
 
     private MapInitializer mapInitializer;
-    private MapActiveUserSynchronizer mapActiveUserSynchronizer;
+    private MapUserSynchronizer mapUserSynchronizer;
     private GoogleMap mMap;
 
     public MapController(final FragmentActivity activity) {
@@ -33,7 +33,7 @@ public final class MapController implements OnMapReadyCallback {
         mapInitializer = new MapInitializer(activity, map);
         mapInitializer.initializeMap();
 
-        mapActiveUserSynchronizer = new MapActiveUserSynchronizer(activity, mMap);
-        //mapActiveUserSynchronizer.synchronizeActiveUsers();
+        mapUserSynchronizer = new MapUserSynchronizer(activity, mMap);
+        mapUserSynchronizer.synchronizeActiveUsers();
     }
 }

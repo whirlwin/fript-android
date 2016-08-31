@@ -20,12 +20,12 @@ import java.util.TimerTask;
 import no.fript.fript.ApiClient;
 import no.fript.fript.LogConstants;
 
-public final class MapActiveUserSynchronizer {
+public final class MapUserSynchronizer {
 
     private final Activity mActivity;
     private final GoogleMap mMap;
 
-    public MapActiveUserSynchronizer(final Activity activity, final GoogleMap map) {
+    public MapUserSynchronizer(final Activity activity, final GoogleMap map) {
         this.mActivity = activity;
         this.mMap = map;
     }
