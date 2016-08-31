@@ -2,4 +2,5 @@
     <string name="app_name">Fript</string>
     <string name="facebook_app_id">612552802237533</string>
     <string name="intro">Where`s your PT now?</string>
+    <string name="app_bar_btn">Blast</string>
 </resources>

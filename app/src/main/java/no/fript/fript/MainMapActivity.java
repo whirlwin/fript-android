@@ -8,6 +8,10 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,7 +23,7 @@ import com.google.android.gms.maps.model.LatLng;
 import no.fript.fript.map.MapController;
 import no.fript.fript.permission.PermissionConstants;
 
-public final class MainMapActivity extends FragmentActivity implements OnMapReadyCallback {
+public final class MainMapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private MapController mapController;
@@ -30,10 +34,19 @@ public final class MainMapActivity extends FragmentActivity implements OnMapRead
 
         setContentView(R.layout.activity_main_map);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.top_bar); // Attaching the layout to the toolbar object
+        setSupportActionBar(toolbar);
+
         this.mapController = new MapController(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.app_bar_menu, menu);
+        return true;
     }
 
     @Override

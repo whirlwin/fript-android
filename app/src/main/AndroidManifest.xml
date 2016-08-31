@@ -29,9 +29,25 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"/>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
+
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".StartMenuActivity"
+            android:label="@string/app_name">
+        </activity>
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -42,16 +58,6 @@
         <activity
             android:name=".MainMapActivity"
             android:label="@string/app_name">
-        </activity>
-
-        <activity
-            android:name=".SplashActivity"
-            android:label="@string/app_name"
-            android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
     </application>
