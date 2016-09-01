@@ -13,7 +13,8 @@ public final class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if (isLoggedIn()) {
-            proceedToMainMap();
+            proceedToStartMenu();
+            //proceedToMainMap();
         } else {
             proceedToStartMenu();
         }

@@ -23,6 +23,16 @@ public final class StartMenuActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_start);
 
+        initializeLoginButton();
+    }
+
+    @Override
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void initializeLoginButton() {
         callbackManager = CallbackManager.Factory.create();
 
         final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
@@ -44,12 +54,6 @@ public final class StartMenuActivity extends AppCompatActivity {
                 int i = 0;
             }
         });
-    }
-
-    @Override
-    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private void proceedToMainMapActivity() {

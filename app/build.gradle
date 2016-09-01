@@ -12,9 +12,40 @@ android {
         versionName "1.0"
     }
     buildTypes {
+
+        debug {
+            buildConfigField 'String', 'FRIPT_API_BASE_URL', '"http://192.168.0.104:4000/"'
+        }
+
         release {
+            buildConfigField 'String', 'FRIPT_API_BASE_URL', '"http://192.168.0.104:4000/"'
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("debug.keystore")
+            storePassword ""
+            keyAlias ""
+            keyPassword ""
+        }
+
+        prod {
+            storeFile file("prod.keystore")
+            storePassword "..."
+            keyAlias "..."
+            keyPassword "..."
+        }
+
+        dev {
+            storeFile file("dev.keystore")
+            storePassword "..."
+            keyAlias "..."
+            keyPassword "..."
         }
     }
 }

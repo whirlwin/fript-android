@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import no.fript.fript.ApiClient;
+import no.fript.fript.api.ApiClient;
 import no.fript.fript.LogConstants;
 
 public final class MapUserSynchronizer {
@@ -43,7 +43,7 @@ public final class MapUserSynchronizer {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(final VolleyError error) {
-                        Log.e(LogConstants.GET_ACTIVE_USERS, "Failed to get active users", error);
+                        Log.e(LogConstants.ACTIVE_USER, "Failed to get active users", error);
                     }
                 });
             }
