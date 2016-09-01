@@ -27,26 +27,6 @@ android {
     }
 
     signingConfigs {
-        debug {
-            storeFile file("debug.keystore")
-            storePassword ""
-            keyAlias ""
-            keyPassword ""
-        }
-
-        prod {
-            storeFile file("prod.keystore")
-            storePassword "..."
-            keyAlias "..."
-            keyPassword "..."
-        }
-
-        dev {
-            storeFile file("dev.keystore")
-            storePassword "..."
-            keyAlias "..."
-            keyPassword "..."
-        }
     }
 }
 

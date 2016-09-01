@@ -33,7 +33,7 @@ public final class GymTypeService {
     }
 
     public void createGymTypePreference(final CreateGymTypePreference createGymTypePreference,
-                                        final Responte.Listener<JSONObject> successCallback,
+                                        final Response.Listener<JSONObject> successCallback,
                                         final Response.ErrorListener errorListener) {
         final String url = BuildConfig.FRIPT_API_BASE_URL + PathConstants.GYM_TYPE;
         try {
