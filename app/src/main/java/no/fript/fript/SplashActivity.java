@@ -12,19 +12,18 @@ public final class SplashActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (isLoggedIn()) {
-            proceedToStartMenu();
-            //proceedToMainMap();
+        if (hasBeenOnboarded()) {
+            proceedToMainMap();
         } else {
-            proceedToStartMenu();
+            proceedToOnboarding();
         }
     }
 
-    private boolean isLoggedIn() {
+    private boolean hasBeenOnboarded() {
         return AccessToken.getCurrentAccessToken() != null;
     }
 
-    private void proceedToStartMenu() {
+    private void proceedToOnboarding() {
         final Intent intent = new Intent(this, StartMenuActivity.class);
         startActivity(intent);
     }

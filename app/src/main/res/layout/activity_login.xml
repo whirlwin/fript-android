@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <TextView
-        android:id="@+id/intro"
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="30sp"
-        android:text="@string/intro"/>
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp" />
 
 </RelativeLayout>

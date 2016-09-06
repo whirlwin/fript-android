@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 
 import no.fript.fript.BuildConfig;
+import no.fript.fript.onboarding.GymTypeService;
 
 public final class ApiClient {
 

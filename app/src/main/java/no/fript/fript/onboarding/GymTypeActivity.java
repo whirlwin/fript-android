@@ -1,10 +1,12 @@
-package no.fript.fript;
+package no.fript.fript.onboarding;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import no.fript.fript.R;
 
 public final class GymTypeActivity extends AppCompatActivity {
 

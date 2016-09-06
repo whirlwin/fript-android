@@ -1,4 +1,4 @@
-package no.fript.fript.api;
+package no.fript.fript.onboarding;
 
 import android.util.Log;
 
@@ -15,13 +15,15 @@ import org.json.JSONObject;
 import no.fript.fript.BuildConfig;
 import no.fript.fript.CreateGymTypePreference;
 import no.fript.fript.LogConstants;
+import no.fript.fript.api.PathConstants;
+import no.fript.fript.api.RequestQueueProvider;
 
 public final class GymTypeService {
 
     private final RequestQueue queue;
 
-    public GymTypeService(final RequestQueue queue) {
-        this.queue = queue;
+    public GymTypeService() {
+        this.queue = RequestQueueProvider.getQueue();
     }
 
     public void getGymTypes(final Response.Listener<JSONArray> successCallback,
