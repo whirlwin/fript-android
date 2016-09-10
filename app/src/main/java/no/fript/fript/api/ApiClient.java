@@ -11,17 +11,15 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 
 import no.fript.fript.BuildConfig;
-import no.fript.fript.onboarding.GymTypeService;
+import no.fript.fript.onboarding.gymtype.GymTypeApiClient;
 
 public final class ApiClient {
 
     private static ApiClient instance;
     private static RequestQueue queue;
-    private final GymTypeService gymTypeService;
 
     private ApiClient(final Activity activity) {
         queue = Volley.newRequestQueue(activity);
-        gymTypeService = new GymTypeService(queue);
     }
 
     public void getActiveUsers(final Response.Listener<JSONArray> successCallback,

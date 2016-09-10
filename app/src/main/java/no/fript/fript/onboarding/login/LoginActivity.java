@@ -1,6 +1,8 @@
-package no.fript.fript.onboarding;
+package no.fript.fript.onboarding.login;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.facebook.CallbackManager;
@@ -15,9 +17,18 @@ public final class LoginActivity extends AppCompatActivity {
 
     private static final String FB_EMAIL_PERMISSION = "email";
 
-    private CallbackManager callbackManager = CallbackManager.Factory.create();
+    private final LoginService loginService;
+    private final CallbackManager callbackManager;
 
     public LoginActivity() {
+        this.loginService = new LoginService();
+        this.callbackManager = CallbackManager.Factory.create();
+    }
+
+    @Override
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
         initializeLoginButton();
     }
 
@@ -28,14 +39,13 @@ public final class LoginActivity extends AppCompatActivity {
     }
 
     private void initializeLoginButton() {
-        callbackManager = CallbackManager.Factory.create();
-
         final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions(FB_EMAIL_PERMISSION);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
             @Override
             public void onSuccess(final LoginResult loginResult) {
+                loginService.handleLogin(loginResult);
             }
 
             @Override

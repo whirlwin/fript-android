@@ -1,4 +1,4 @@
-package no.fript.fript.onboarding;
+package no.fript.fript.onboarding.gymtype;
 
 import android.util.Log;
 
@@ -18,11 +18,11 @@ import no.fript.fript.LogConstants;
 import no.fript.fript.api.PathConstants;
 import no.fript.fript.api.RequestQueueProvider;
 
-public final class GymTypeService {
+public final class GymTypeApiClient {
 
     private final RequestQueue queue;
 
-    public GymTypeService() {
+    public GymTypeApiClient() {
         this.queue = RequestQueueProvider.getQueue();
     }
 
@@ -39,12 +39,13 @@ public final class GymTypeService {
                                         final Response.ErrorListener errorListener) {
         final String url = BuildConfig.FRIPT_API_BASE_URL + PathConstants.GYM_TYPE;
         try {
-            final JSONObject json = createGymTypePreference.toJSONObject();
-            final JsonObjectRequest request = new JsonObjectRequest(
-                    Request.Method.POST, url, json, successCallback, errorListener);
+            final JSONObject json = new JSONObject();
+            json.put("gymTypeId", createGymTypePreference.getGymTypeId());
+            final JsonObjectRequest request =
+                    new JsonObjectRequest(Request.Method.POST, url, json, successCallback, errorListener);
             queue.add(request);
         } catch (final JSONException e) {
-            Log.e(LogConstants.GYM_TYPE_PREFERENCE, "Failed to create gym type preference", e);
+            Log.e(LogConstants.GYM_TYPE_PREFERENCE, "Failed to create gym type preference due to JSON error", e);
         }
     }
 }

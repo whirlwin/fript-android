@@ -1,4 +1,4 @@
-package no.fript.fript.onboarding;
+package no.fript.fript.onboarding.gymtype;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

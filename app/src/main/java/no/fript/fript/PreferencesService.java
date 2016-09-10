@@ -11,6 +11,11 @@ public final class PreferencesService {
     private PreferencesService() {
     }
 
+    public String getPreference(final Context context) {
+        //context.getSharedPreferences()
+        return null;
+    }
+
     public static PreferencesService getInstance() {
         if (instance == null) {
             instance = new PreferencesService();
