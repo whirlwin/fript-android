@@ -20,9 +20,11 @@ import no.fript.fript.api.RequestQueueProvider;
 
 public final class GymTypeApiClient {
 
+    private static GymTypeApiClient instance;
+
     private final RequestQueue queue;
 
-    public GymTypeApiClient() {
+    private GymTypeApiClient() {
         this.queue = RequestQueueProvider.getQueue();
     }
 
@@ -47,5 +49,12 @@ public final class GymTypeApiClient {
         } catch (final JSONException e) {
             Log.e(LogConstants.GYM_TYPE_PREFERENCE, "Failed to create gym type preference due to JSON error", e);
         }
+    }
+
+    public static GymTypeApiClient getInstance() {
+        if (instance == null) {
+            instance = new GymTypeApiClient();
+        }
+        return instance;
     }
 }

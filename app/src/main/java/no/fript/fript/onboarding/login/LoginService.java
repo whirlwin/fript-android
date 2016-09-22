@@ -9,10 +9,11 @@ import org.json.JSONObject;
 
 public final class LoginService {
 
+    private static LoginService instance;
+
     private final LoginApiClient loginApiClient;
 
-
-    public LoginService() {
+    private LoginService() {
         this.loginApiClient = new LoginApiClient();
     }
 
@@ -32,6 +33,13 @@ public final class LoginService {
 
             }
         });
+    }
+
+    public static LoginService getInstance() {
+        if (instance == null) {
+            instance = new LoginService();
+        }
+        return instance;
     }
 }
 

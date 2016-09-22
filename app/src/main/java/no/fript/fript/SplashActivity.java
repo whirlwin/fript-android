@@ -7,8 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import com.facebook.AccessToken;
 
 import no.fript.fript.onboarding.login.LoginActivity;
+import no.fript.fript.onboarding.login.LoginService;
 
 public final class SplashActivity extends AppCompatActivity {
+
+    private final LoginService loginService;
+
+    public SplashActivity() {
+        loginService = LoginService.getInstance();
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {

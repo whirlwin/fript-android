@@ -21,7 +21,7 @@ public final class LoginActivity extends AppCompatActivity {
     private final CallbackManager callbackManager;
 
     public LoginActivity() {
-        this.loginService = new LoginService();
+        this.loginService = LoginService.getInstance();
         this.callbackManager = CallbackManager.Factory.create();
     }
 
