@@ -11,7 +11,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 
 import no.fript.fript.BuildConfig;
-import no.fript.fript.onboarding.gymtype.GymTypeApiClient;
 
 public final class ApiClient {
 
@@ -24,12 +23,12 @@ public final class ApiClient {
 
     public void getActiveUsers(final Response.Listener<JSONArray> successCallback,
                                final Response.ErrorListener errorCallback) {
-        getJsonArray(PathConstants.ACTIVE_USER, successCallback, errorCallback);
+        getJsonArray(PathConstants.GET_ACTIVE_USERS, successCallback, errorCallback);
     }
 
     public void getGymTypes(final Response.Listener<JSONArray> successCallback,
                             final Response.ErrorListener errorCallback) {
-        getJsonArray(PathConstants.GYM_TYPE, successCallback, errorCallback);
+        getJsonArray(PathConstants.GET_GYM_TYPE, successCallback, errorCallback);
     }
 
     private void getJsonArray(final String path,

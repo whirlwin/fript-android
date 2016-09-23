@@ -26,7 +26,7 @@ public final class LoginApiClient {
     public void handleLogin(final FacebookLoginRequest facebookLoginRequest,
                             final Response.Listener<JSONObject> successCallback,
                             final Response.ErrorListener errorCallback) {
-        final String url = BuildConfig.FRIPT_API_BASE_URL + PathConstants.FACEBOOK_LOGIN;
+        final String url = BuildConfig.FRIPT_API_BASE_URL + PathConstants.GET_ACCOUNT;
         final JSONObject json = new JSONObject();
         try {
             json.put("loginToken", facebookLoginRequest.getLoginToken());

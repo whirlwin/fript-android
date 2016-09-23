@@ -30,7 +30,7 @@ public final class GymTypeApiClient {
 
     public void getGymTypes(final Response.Listener<JSONArray> successCallback,
                             final Response.ErrorListener errorCallback) {
-        final String url = BuildConfig.FRIPT_API_BASE_URL + PathConstants.GYM_TYPE;
+        final String url = BuildConfig.FRIPT_API_BASE_URL + PathConstants.GET_GYM_TYPE;
         final JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET, url, null, successCallback, errorCallback);
         queue.add(request);
@@ -39,7 +39,7 @@ public final class GymTypeApiClient {
     public void createGymTypePreference(final CreateGymTypePreference createGymTypePreference,
                                         final Response.Listener<JSONObject> successCallback,
                                         final Response.ErrorListener errorListener) {
-        final String url = BuildConfig.FRIPT_API_BASE_URL + PathConstants.GYM_TYPE;
+        final String url = BuildConfig.FRIPT_API_BASE_URL + PathConstants.GET_GYM_TYPE;
         try {
             final JSONObject json = new JSONObject();
             json.put("gymTypeId", createGymTypePreference.getGymTypeId());
