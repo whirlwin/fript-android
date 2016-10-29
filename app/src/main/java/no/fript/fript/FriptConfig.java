@@ -6,12 +6,15 @@ import no.fript.fript.api.RequestQueueProvider;
 
 public final class FriptConfig {
 
-    private final RequestQueueProvider requestQueueProvider;
+    private final Context context;
+
+    private RequestQueueProvider requestQueueProvider;
 
     public FriptConfig(final Context context) {
-        this.requestQueueProvider = new RequestQueueProvider(context);
+        this.context = context;
     }
 
     public void configure() {
+        this.requestQueueProvider = new RequestQueueProvider(context);
     }
 }

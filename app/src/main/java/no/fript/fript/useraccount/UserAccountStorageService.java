@@ -1,11 +1,11 @@
 package no.fript.fript.useraccount;
 
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.facebook.AccessToken;
+import com.google.common.base.Optional;
 
 import org.json.JSONObject;
 
@@ -14,16 +14,18 @@ import no.fript.fript.LogConstants;
 public final class UserAccountStorageService {
 
     private static UserAccountStorageService instance;
-
-    private static UserAccount currentUserAccount;
+    private static Optional<UserAccount> currentUserAccount;
 
     private final UserAccountApiClient userAccountApiClient;
     private final UserAccountMapper userAccountMapper;
 
+    static {
+        currentUserAccount = Optional.absent();
+    }
+
     private UserAccountStorageService() {
         this.userAccountApiClient = UserAccountApiClient.getInstance();
         this.userAccountMapper = UserAccountMapper.getInstance();
-
     }
 
     public void loadUserAccount() {
@@ -32,7 +34,8 @@ public final class UserAccountStorageService {
             userAccountApiClient.getAccount(accessToken, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(final JSONObject response) {
-                    currentUserAccount = userAccountMapper.mapToUserAccount(response);
+                    final UserAccount maybeUserAccount = userAccountMapper.mapToUserAccount(response);
+                    currentUserAccount = Optional.of(maybeUserAccount);
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -45,7 +48,7 @@ public final class UserAccountStorageService {
         }
     }
 
-    public @Nullable UserAccount getCurrentUserAccount() {
+    public Optional<UserAccount> getCurrentUserAccount() {
         return currentUserAccount;
     }
 

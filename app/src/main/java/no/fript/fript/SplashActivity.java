@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.facebook.AccessToken;
+import com.google.common.base.Optional;
 
 import no.fript.fript.useraccount.UserAccount;
 import no.fript.fript.useraccount.UserAccountStorageService;
@@ -30,8 +31,8 @@ public final class SplashActivity extends AppCompatActivity {
     }
 
     private boolean hasBeenOnboarded() {
-        final UserAccount currentUserAccount = userAccountStorageService.getCurrentUserAccount();
-        return currentUserAccount != null && currentUserAccount.hasBeenOnboarded();
+        final Optional<UserAccount> currentUserAccount = userAccountStorageService.getCurrentUserAccount();
+        return currentUserAccount.isPresent() && currentUserAccount.get().hasBeenOnboarded();
     }
 
     private void proceedToOnboarding() {

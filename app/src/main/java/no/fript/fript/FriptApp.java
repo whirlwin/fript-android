@@ -22,9 +22,9 @@ public final class FriptApp extends Application {
         final FriptConfig config = new FriptConfig(getApplicationContext());
         config.configure();
 
-        //userAccountStorageService.loadUserAccount();
-
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+
+        userAccountStorageService.loadUserAccount();
     }
 }
