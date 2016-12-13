@@ -9,37 +9,11 @@ import org.json.JSONObject;
 
 public final class LoginService {
 
-    private static LoginService instance;
-
-    private final LoginApiClient loginApiClient;
-
-    private LoginService() {
-        this.loginApiClient = new LoginApiClient();
-    }
-
-    public void handleLogin(final LoginResult loginResult) {
+    void handleLogin(final LoginResult loginResult) {
         final AccessToken accessToken = loginResult.getAccessToken();
         final String token = accessToken.getToken();
         final String userId = accessToken.getUserId();
         final FacebookLoginRequest facebookLoginRequest = new FacebookLoginRequest(token, userId);
-        loginApiClient.handleLogin(facebookLoginRequest, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(final JSONObject response) {
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(final VolleyError error) {
-
-            }
-        });
-    }
-
-    public static LoginService getInstance() {
-        if (instance == null) {
-            instance = new LoginService();
-        }
-        return instance;
     }
 }
 

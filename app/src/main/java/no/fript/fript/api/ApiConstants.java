@@ -1,6 +1,6 @@
 package no.fript.fript.api;
 
-public final class ApiConstants {
+final class ApiConstants {
 
-    public static final String BASE_URL = "http://localhost:4000";
+    static final String BASE_URL = "http://localhost:4000";
 }

@@ -17,7 +17,6 @@ import org.json.JSONObject;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import no.fript.fript.api.ApiClient;
 import no.fript.fript.LogConstants;
 
 public final class MapUserSynchronizer {
@@ -35,7 +34,8 @@ public final class MapUserSynchronizer {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                ApiClient.getInstance(mActivity).getActiveUsers(new Response.Listener<JSONArray>() {
+                /*
+                ApiClientOld.getInstance(mActivity).getActiveUsers(new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(final JSONArray response) {
                         populateMapWithActiveUsers(response);
@@ -46,6 +46,7 @@ public final class MapUserSynchronizer {
                         Log.e(LogConstants.ACTIVE_USER, "Failed to get active users", error);
                     }
                 });
+                */
             }
         }, 0, 10000);
     }

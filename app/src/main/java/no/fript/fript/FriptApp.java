@@ -5,26 +5,24 @@ import android.app.Application;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
-import no.fript.fript.useraccount.UserAccountStorageService;
+import no.fript.fript.user.UserStorageService;
 
 public final class FriptApp extends Application {
 
-    private final UserAccountStorageService userAccountStorageService;
+    private final DaggerConfig daggerConfig;
+    private final UserStorageService userStorageService;
 
     public FriptApp() {
-        this.userAccountStorageService = UserAccountStorageService.getInstance();
+        this.daggerConfig = new DaggerConfig();
+        this.userStorageService = new UserStorageService();
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-
-        final FriptConfig config = new FriptConfig(getApplicationContext());
-        config.configure();
-
+        this.daggerConfig.configure(this);
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
-
-        userAccountStorageService.loadUserAccount();
+        this.userStorageService.loadUserIntoStorage();
     }
 }

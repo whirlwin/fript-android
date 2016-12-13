@@ -4,24 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.facebook.AccessToken;
 import com.google.common.base.Optional;
 
-import no.fript.fript.useraccount.UserAccount;
-import no.fript.fript.useraccount.UserAccountStorageService;
+import javax.inject.Inject;
+
+import no.fript.fript.user.User;
+import no.fript.fript.user.UserStorageService;
 import no.fript.fript.onboarding.login.LoginActivity;
 
 public final class SplashActivity extends AppCompatActivity {
 
-    private final UserAccountStorageService userAccountStorageService;
-
-    public SplashActivity() {
-        userAccountStorageService = UserAccountStorageService.getInstance();
-    }
+    @Inject UserStorageService userStorageService;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Components.netComponent.inject(this);
 
         if (hasBeenOnboarded()) {
             proceedToMainMap();
@@ -31,7 +30,7 @@ public final class SplashActivity extends AppCompatActivity {
     }
 
     private boolean hasBeenOnboarded() {
-        final Optional<UserAccount> currentUserAccount = userAccountStorageService.getCurrentUserAccount();
+        final Optional<User> currentUserAccount = userStorageService.getCurrentUserAccount();
         return currentUserAccount.isPresent() && currentUserAccount.get().hasBeenOnboarded();
     }
 

@@ -11,23 +11,25 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import javax.inject.Inject;
+
+import no.fript.fript.Components;
 import no.fript.fript.R;
 
 public final class LoginActivity extends AppCompatActivity {
 
     private static final String FB_EMAIL_PERMISSION = "email";
 
-    private final LoginService loginService;
-    private final CallbackManager callbackManager;
+    @Inject
+    LoginService loginService;
 
-    public LoginActivity() {
-        this.loginService = LoginService.getInstance();
-        this.callbackManager = CallbackManager.Factory.create();
-    }
+    @Inject
+    CallbackManager callbackManager;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Components.netComponent.inject(this);
         setContentView(R.layout.activity_login);
         initializeLoginButton();
     }
