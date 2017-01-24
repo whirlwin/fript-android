@@ -1,11 +1,18 @@
 package no.fript.fript.user;
 
+import android.util.Log;
+
 import com.facebook.AccessToken;
 import com.google.common.base.Optional;
 
 import javax.inject.Inject;
 
-public final class UserStorageService {
+import no.fript.fript.api.ApiClient;
+
+public class UserStorageService {
+
+    @Inject
+    ApiClient apiClient;
 
     private static Optional<User> currentUser;
 
@@ -42,6 +49,8 @@ public final class UserStorageService {
     }
 
     public Optional<User> getCurrentUserAccount() {
+        String a = apiClient.test();
+        Log.e("asd", a);
         return currentUser;
     }
 }

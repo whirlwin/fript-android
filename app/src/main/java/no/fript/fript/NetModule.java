@@ -6,12 +6,20 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import no.fript.fript.api.ApiClient;
+import no.fript.fript.api.RetrofitService;
 import no.fript.fript.onboarding.login.LoginService;
 import no.fript.fript.user.UserMapper;
 import no.fript.fript.user.UserStorageService;
 
 @Module
 public class NetModule {
+
+    String baseUrl;
+
+    public NetModule(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
 
     @Provides
     @Singleton
@@ -35,5 +43,11 @@ public class NetModule {
     @Singleton
     CallbackManager providesCallbackManager() {
         return CallbackManager.Factory.create();
+    }
+
+    @Provides
+    @Singleton
+    ApiClient providesApiClient(RetrofitService retrofitService) {
+        return new ApiClient(retrofitService);
     }
 }

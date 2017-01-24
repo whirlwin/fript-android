@@ -2,7 +2,7 @@ package no.fript.fript.api;
 
 import javax.inject.Inject;
 
-final class RetrofitService {
+public final class RetrofitService {
 
     private final RetrofitConfig retrofitConfig;
 
