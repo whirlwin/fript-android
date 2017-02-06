@@ -14,13 +14,16 @@ import no.fript.fript.onboarding.login.LoginActivity;
 
 public final class SplashActivity extends AppCompatActivity {
 
-    @Inject UserStorageService userStorageService;
+    @Inject
+    UserStorageService userStorageService;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Components.netComponent.inject(this);
+
+        this.userStorageService.loadUserIntoStorage();
 
         if (hasBeenOnboarded()) {
             proceedToMainMap();

@@ -14,6 +14,7 @@ import com.facebook.login.widget.LoginButton;
 import javax.inject.Inject;
 
 import no.fript.fript.Components;
+import no.fript.fript.FriptApp;
 import no.fript.fript.R;
 
 public final class LoginActivity extends AppCompatActivity {
@@ -29,8 +30,8 @@ public final class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Components.netComponent.inject(this);
         setContentView(R.layout.activity_login);
+        Components.netComponent.inject(this);
         initializeLoginButton();
     }
 

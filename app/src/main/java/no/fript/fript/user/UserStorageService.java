@@ -5,14 +5,18 @@ import android.util.Log;
 import com.facebook.AccessToken;
 import com.google.common.base.Optional;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 
+import no.fript.fript.Components;
+import no.fript.fript.FriptApp;
+import no.fript.fript.LogConstants;
 import no.fript.fript.api.ApiClient;
 
 public class UserStorageService {
 
-    @Inject
-    ApiClient apiClient;
+    private final ApiClient apiClient;
 
     private static Optional<User> currentUser;
 
@@ -20,37 +24,27 @@ public class UserStorageService {
         currentUser = Optional.absent();
     }
 
+    @Inject
+    public UserStorageService(final ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
+
     public void loadUserIntoStorage() {
-        final Optional<AccessToken> maybeAccessToken = Optional.fromNullable(AccessToken.getCurrentAccessToken());
+        final Optional<AccessToken> maybeAccessToken =
+                Optional.fromNullable(AccessToken.getCurrentAccessToken());
         if (maybeAccessToken.isPresent()) {
-
-        } else {
-
+            final AccessToken accessToken = maybeAccessToken.get();
+            try {
+                final FacebookLoginRequest facebookLoginRequest =
+                        new FacebookLoginRequest(accessToken.getToken(), accessToken.getUserId());
+                this.apiClient.logIn(facebookLoginRequest);
+            } catch (final IOException e) {
+                Log.e(LogConstants.LOG_IN, "Failed to load user into storage", e);
+            }
         }
-        /*
-        final AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        if (accessToken != null) {
-            userAccountApiClient.getAccount(accessToken, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(final JSONObject response) {
-                    final User maybeUser = userMapper.mapToUserAccount(response);
-                    currentUser = Optional.of(maybeUser);
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(final VolleyError error) {
-                    final String errMsg = "Failed to get account for FB userId "
-                            + accessToken.getUserId();
-                    Log.e(LogConstants.ACCOUNT, errMsg, error);
-                }
-            });
-        }
-        */
     }
 
     public Optional<User> getCurrentUserAccount() {
-        String a = apiClient.test();
-        Log.e("asd", a);
         return currentUser;
     }
 }

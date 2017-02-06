@@ -1,24 +1,25 @@
 package no.fript.fript;
 
-import android.app.Application;
+import com.facebook.CallbackManager;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import no.fript.fript.onboarding.login.LoginService;
 
 @Module
 public class AppModule {
 
-    Application application;
-
-    public AppModule(Application application) {
-        this.application = application;
+    @Provides
+    @Singleton
+    LoginService providesLoginService() {
+        return new LoginService();
     }
 
     @Provides
     @Singleton
-    Application providesApplication() {
-        return application;
+    CallbackManager providesCallbackManager() {
+        return CallbackManager.Factory.create();
     }
 }
