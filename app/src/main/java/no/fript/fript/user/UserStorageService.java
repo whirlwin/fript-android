@@ -9,10 +9,11 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import no.fript.fript.Components;
-import no.fript.fript.FriptApp;
 import no.fript.fript.LogConstants;
 import no.fript.fript.api.ApiClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UserStorageService {
 
@@ -33,14 +34,28 @@ public class UserStorageService {
         final Optional<AccessToken> maybeAccessToken =
                 Optional.fromNullable(AccessToken.getCurrentAccessToken());
         if (maybeAccessToken.isPresent()) {
-            final AccessToken accessToken = maybeAccessToken.get();
-            try {
-                final FacebookLoginRequest facebookLoginRequest =
-                        new FacebookLoginRequest(accessToken.getToken(), accessToken.getUserId());
-                this.apiClient.logIn(facebookLoginRequest);
-            } catch (final IOException e) {
-                Log.e(LogConstants.LOG_IN, "Failed to load user into storage", e);
-            }
+            final AccessToken token = maybeAccessToken.get();
+            new FacebookLoginRequest(token.getToken(), token.getUserId(), new Callback<User>() {
+
+                @Override
+                public void onResponse(final Call<User> call, final Response<User> response) {
+                    handleLogInResultSuccess(response);
+                }
+
+                @Override
+                public void onFailure(final Call<User> call, final Throwable t) {
+                    Log.e(LogConstants.LOG_IN, "Failed to load user into storage", t);
+                }
+            });
+        }
+    }
+
+    private void handleLogInResultSuccess(final Response<User> response) {
+        if (response.isSuccessful()) {
+            response.body();
+        } else {
+            Log.e(LogConstants.LOG_IN,
+                    "Failed to load user into storage: " + response.errorBody().toString());
         }
     }
 
